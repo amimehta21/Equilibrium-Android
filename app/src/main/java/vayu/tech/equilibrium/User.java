@@ -38,7 +38,125 @@ public class User {
         this.creationDate = creationDate;
     }
 
-    // toString method
+    public int getUserId() {
+        return userId;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public boolean isAccountActive() {
+        return isAccountActive;
+    }
+
+    public void setAccountActive(boolean accountActive) {
+        isAccountActive = accountActive;
+    }
+
+    public boolean isCanLogin() {
+        return canLogin;
+    }
+
+    public void setCanLogin(boolean canLogin) {
+        this.canLogin = canLogin;
+    }
+
+    public boolean isUserManager() {
+        return isUserManager;
+    }
+
+    public void setUserManager(boolean userManager) {
+        isUserManager = userManager;
+    }
+
+    public boolean isAthlete() {
+        return isAthlete;
+    }
+
+    public void setAthlete(boolean athlete) {
+        isAthlete = athlete;
+    }
+
+    public boolean isDataVisualizer() {
+        return isDataVisualizer;
+    }
+
+    public void setDataVisualizer(boolean dataVisualizer) {
+        isDataVisualizer = dataVisualizer;
+    }
+
+    public boolean isAgreeToPolicy() {
+        return agreeToPolicy;
+    }
+
+    public void setAgreeToPolicy(boolean agreeToPolicy) {
+        this.agreeToPolicy = agreeToPolicy;
+    }
+
+    public boolean isLicenseAllocator() {
+        return isLicenseAllocator;
+    }
+
+    public void setLicenseAllocator(boolean licenseAllocator) {
+        isLicenseAllocator = licenseAllocator;
+    }
+
+    public int getOrgId() {
+        return orgId;
+    }
+
+    public void setOrgId(int orgId) {
+        this.orgId = orgId;
+    }
+
+    public boolean isPurchaser() {
+        return isPurchaser;
+    }
+
+    public void setPurchaser(boolean purchaser) {
+        isPurchaser = purchaser;
+    }
+
+    public boolean isDataCollector() {
+        return isDataCollector;
+    }
+
+    public void setDataCollector(boolean dataCollector) {
+        isDataCollector = dataCollector;
+    }
+
+    public String getCreationDate() {
+        return creationDate;
+    }
+
+    public void setCreationDate(String creationDate) {
+        this.creationDate = creationDate;
+    }
 
     @Override
     public String toString() {
@@ -59,130 +177,6 @@ public class User {
                 ", isDataCollector=" + isDataCollector +
                 ", creationDate='" + creationDate + '\'' +
                 '}';
-    }
-
-    // Setter methods
-
-    public void setUserId(int userId) {
-        this.userId = userId;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public void setAccountActive(boolean accountActive) {
-        isAccountActive = accountActive;
-    }
-
-    public void setCanLogin(boolean canLogin) {
-        this.canLogin = canLogin;
-    }
-
-    public void setUserManager(boolean userManager) {
-        isUserManager = userManager;
-    }
-
-    public void setAthlete(boolean athlete) {
-        isAthlete = athlete;
-    }
-
-    public void setDataVisualizer(boolean dataVisualizer) {
-        isDataVisualizer = dataVisualizer;
-    }
-
-    public void setAgreeToPolicy(boolean agreeToPolicy) {
-        this.agreeToPolicy = agreeToPolicy;
-    }
-
-    public void setLicenseAllocator(boolean licenseAllocator) {
-        isLicenseAllocator = licenseAllocator;
-    }
-
-    public void setOrgId(int orgId) {
-        this.orgId = orgId;
-    }
-
-    public void setPurchaser(boolean purchaser) {
-        isPurchaser = purchaser;
-    }
-
-    public void setDataCollector(boolean dataCollector) {
-        isDataCollector = dataCollector;
-    }
-
-    public void setCreationDate(String creationDate) {
-        this.creationDate = creationDate;
-    }
-
-    // Getter methods
-
-    public int getUserId() {
-        return userId;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public boolean isAccountActive() {
-        return isAccountActive;
-    }
-
-    public boolean isCanLogin() {
-        return canLogin;
-    }
-
-    public boolean isUserManager() {
-        return isUserManager;
-    }
-
-    public boolean isAthlete() {
-        return isAthlete;
-    }
-
-    public boolean isDataVisualizer() {
-        return isDataVisualizer;
-    }
-
-    public boolean isAgreeToPolicy() {
-        return agreeToPolicy;
-    }
-
-    public boolean isLicenseAllocator() {
-        return isLicenseAllocator;
-    }
-
-    public int getOrgId() {
-        return orgId;
-    }
-
-    public boolean isPurchaser() {
-        return isPurchaser;
-    }
-
-    public boolean isDataCollector() {
-        return isDataCollector;
-    }
-
-    public String getCreationDate() {
-        return creationDate;
     }
 
 }

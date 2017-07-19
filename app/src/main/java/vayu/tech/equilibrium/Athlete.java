@@ -116,31 +116,4 @@ public class Athlete {
     }
 
 
-    /*
-
-        private var athleteID: Int!
-    private var userID: Int!
-    private var dob: Date!
-    private var gender: Character!
-    public enum type_gender: Character {
-        case male = "M"
-        case female = "F"
-    }
-    private var height_ft: Int!
-    private var height_in: Int!
-    private var heightUnit: String! // "cms" or "ft" or ","
-    public enum type_height_unit: String {
-        case cms = "cms"
-        case ft = "ft"
-        case comma = ","
-    }
-    private var weight: Int!
-    private var weightUnit: String! // "lb" or "kg"
-    public enum unit_weight: String {
-        case lb = "lb";
-        case kg = "kg";
-    }
-
-     */
-
 }
