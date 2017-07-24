@@ -1,6 +1,8 @@
 package vayu.tech.equilibrium;
 
-public class Trial {
+import java.io.Serializable;
+
+public class Trial implements Serializable {
 
     private int trialId;
     private String name;
@@ -18,6 +20,11 @@ public class Trial {
         this.userId = userId;
         this.licenseId = licenseId;
         this.timestamp = timestamp;
+    }
+
+    public Trial(int trialId, String name) {
+        this.trialId = trialId;
+        this.name = name;
     }
 
     public int getTrialId() {

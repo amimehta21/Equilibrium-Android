@@ -1,6 +1,8 @@
 package vayu.tech.equilibrium;
 
-public class User {
+import java.io.Serializable;
+
+public class User implements Serializable {
 
     private int userId;
     private String name;
@@ -36,6 +38,11 @@ public class User {
         this.isPurchaser = isPurchaser;
         this.isDataCollector = isDataCollector;
         this.creationDate = creationDate;
+    }
+
+    public User(int userId, String name) {
+        this.userId = userId;
+        this.name = name;
     }
 
     public int getUserId() {

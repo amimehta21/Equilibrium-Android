@@ -1,14 +1,16 @@
 package vayu.tech.equilibrium;
 
+import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Arrays;
 
-public class SimpleAthlete {
+public class SimpleAthlete implements Serializable {
 
     private String name;
     private String userId;
-    private Trial[] trials;
+    private ArrayList<Trial> trials;
 
-    public SimpleAthlete(String name, String userId, Trial[] trials) {
+    public SimpleAthlete(String name, String userId, ArrayList<Trial> trials) {
         this.name = name;
         this.userId = userId;
         this.trials = trials;
@@ -30,11 +32,11 @@ public class SimpleAthlete {
         this.userId = userId;
     }
 
-    public Trial[] getTrials() {
+    public ArrayList<Trial> getTrials() {
         return trials;
     }
 
-    public void setTrials(Trial[] trials) {
+    public void setTrials(ArrayList<Trial> trials) {
         this.trials = trials;
     }
 
@@ -43,7 +45,7 @@ public class SimpleAthlete {
         return "SimpleAthlete{" +
                 "name='" + name + '\'' +
                 ", userId='" + userId + '\'' +
-                ", trials=" + Arrays.toString(trials) +
+                ", trials=" + trials +
                 '}';
     }
 
