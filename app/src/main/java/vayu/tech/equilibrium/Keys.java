@@ -6,6 +6,7 @@ public class Keys {
     public static final String EXTRA_SIMPLE_ATHLETE = "extra_simple_athlete";
     public static final String EXTRA_ATHLETE_ID = "extra_athlete_id";
     public static final String EXTRA_TRIAL = "extra_trial";
+    public static final String EXTRA_FILE_PATH = "extra_file_path";
 
     public static String TO_LOGIN = "to_login";
     public static String TO_SESSIONS = "to_session";

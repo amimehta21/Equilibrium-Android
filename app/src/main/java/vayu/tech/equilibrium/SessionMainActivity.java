@@ -12,6 +12,9 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -24,6 +27,8 @@ public class SessionMainActivity extends AppCompatActivity {
 
     private ArrayList<String> mList;
 
+    private String parentDirectory;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,6 +38,7 @@ public class SessionMainActivity extends AppCompatActivity {
 
         athleteId = (String) getIntent().getExtras().get(Keys.EXTRA_ATHLETE_ID);
         trial = (Trial) getIntent().getExtras().get(Keys.EXTRA_TRIAL);
+        parentDirectory = "demo_data/" + athleteId + "/" + trial.getTrialId();
 
         System.out.println("Athlete: " + athleteId);
         System.out.println("Trial:" + trial);
@@ -41,11 +47,10 @@ public class SessionMainActivity extends AppCompatActivity {
     }
 
     private void readFiles() {
-        String path = "demo_data/" + athleteId + "/" + trial.getTrialId();
-        System.out.println(path);
+        System.out.println(parentDirectory);
         ArrayList<String> folders = null;
         try {
-            folders = new ArrayList<>(Arrays.asList(getAssets().list(path)));
+            folders = new ArrayList<>(Arrays.asList(getAssets().list(parentDirectory)));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -100,15 +105,15 @@ public class SessionMainActivity extends AppCompatActivity {
 
         String tapped = mList.get(position);
         if (tapped.equals("Acceleration")) {
-            System.out.println("/acceleration");
+            accelerationTapped();
         } else if (tapped.equals("Velocity")) {
-            System.out.println("/velocity");
+            velocityTapped();
         } else if (tapped.equals("Orientation")) {
             orientationTapped();
         } else if (tapped.equals("Stats")) {
-            System.out.println("Go to stats");
+            statsTapped();
         } else if (tapped.equals("GRF")) {
-            System.out.println("/grf");
+            grfTapped();
         }
 
         /*
@@ -119,8 +124,43 @@ public class SessionMainActivity extends AppCompatActivity {
         */
     }
 
+    private void grfTapped() {
+        // go to grF graph
+        goToGraph("/grf/grf_values.json");
+    }
+
+    private void statsTapped() {
+        // go to stats
+    }
+
+    private void velocityTapped() {
+        final String choices[] = new String[] {"Foot", "Speed"};
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Choose an Option");
+        builder.setItems(choices, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                goToGraph("/velocity/" + choices[which].toLowerCase() + ".json");
+            }
+        });
+        builder.show();
+    }
+
+    private void accelerationTapped() {
+        final String choices[] = new String[] {"Body", "Foot", "Forearm", "Shank", "Thigh", "Trunk", "Upperarm", "Wrist"};
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Choose an Option");
+        builder.setItems(choices, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                goToGraph("/acceleration/" + choices[which].toLowerCase() + ".json");
+            }
+        });
+        builder.show();
+    }
+
     private void orientationTapped() {
-        final String choices[] = new String[] {"Frontal", "Saggital", "Transverse"};
+        final String choices[] = new String[] {"Frontal", "Sagittal", "Transverse"};
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Choose an Option");
@@ -131,7 +171,6 @@ public class SessionMainActivity extends AppCompatActivity {
             }
         });
         builder.show();
-
     }
 
     private void orientationDetailTapped(final String type) {
@@ -141,10 +180,50 @@ public class SessionMainActivity extends AppCompatActivity {
         builder.setItems(choices, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                System.out.println("/orientation/" + type + "/" + choices[which]);
+                if (choices[which].equals("Absolute")) absoluteTapped(type, choices[which]);
+                if (choices[which].equals("Relative")) relativeTapped(type, choices[which]);
             }
         });
         builder.show();
+    }
+
+    private void relativeTapped(final String type1, final String type2) {
+        final String choices[] = new String[] {"Ankle", "Elbow", "Hip", "Knee", "Shoulder", "Wrist"};
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Choose an Option");
+        builder.setItems(choices, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                if (choices[which] == null) System.out.println("CHOICES NULL");
+                goToGraph("/orientation/" + type1.toLowerCase() + "/" + type2.toLowerCase() + "/" + choices[which].toLowerCase() + ".json");
+            }
+        });
+        builder.show();
+    }
+
+    private void absoluteTapped(final String type1, final String type2) {
+        final String choices[] = new String[] {"Foot", "Forearm", "Hand", "Shank", "Thigh", "Trunk", "Upperarm"};
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Choose an Option");
+        builder.setItems(choices, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                if (choices[which] == null) System.out.println("CHOICES NULL");
+                goToGraph("/orientation/" + type1.toLowerCase() + "/" + type2.toLowerCase() + "/" + choices[which].toLowerCase() + ".json");
+            }
+        });
+        builder.show();
+    }
+
+    private void goToGraph(String path) {
+        System.out.println("Path: " + parentDirectory + path);
+        Intent intent = new Intent(SessionMainActivity.this, GraphActivity.class);
+        intent.putExtra(Keys.EXTRA_FILE_PATH, parentDirectory + path);
+        startActivity(intent);
+
+
+
+        // System.out.println(FileUtils.readFile(getAssets(), parentDirectory + path));
     }
 
 

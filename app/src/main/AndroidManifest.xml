@@ -23,7 +23,8 @@
         <activity android:name=".LoginActivity" />
         <activity android:name=".SelectAthleteActivity" />
         <activity android:name=".SelectSessionActivity" />
-        <activity android:name=".SessionMainActivity"></activity>
+        <activity android:name=".SessionMainActivity" />
+        <activity android:name=".GraphActivity"></activity>
     </application>
 
 </manifest>
